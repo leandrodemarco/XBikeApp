@@ -15,6 +15,10 @@ class StartRideView: UIView {
     private let orangeColor = UIColor(named: "mainBackground")
     private let disabledColor = UIColor(named: "disabledTextColor")
 
+    private var rideTimer: Timer?
+    private var rideDuration: TimeInterval = 0
+    private let durationFormatter = DateComponentsFormatter()
+
     private let kTimerLabelInset: CGFloat = 16
     private let kControlLabelsWidth: CGFloat = 92
     private let kLabelsHeight: CGFloat = 21
@@ -25,6 +29,11 @@ class StartRideView: UIView {
         separatorView.backgroundColor = orangeColor
         setupLabels()
         setupAutolayout()
+        setupActions()
+
+        durationFormatter.allowedUnits = [.hour, .minute, .second]
+        durationFormatter.unitsStyle = .positional
+        durationFormatter.zeroFormattingBehavior = .pad
     }
 
     required init?(coder: NSCoder) {
@@ -74,11 +83,50 @@ class StartRideView: UIView {
         stopLabel.textAlignment = .center
 
         timerLabel.textColor = .black
-        startLabel.textColor = orangeColor
-        stopLabel.textColor = disabledColor
+        setLabel(startLabel, enabled: true)
+        setLabel(stopLabel, enabled: false)
 
         timerLabel.text = "00 : 00 : 00"
         startLabel.text = "Start"
         stopLabel.text = "Stop"
+    }
+
+    // MARK: Start/Stop Actions
+    private func setupActions() {
+        let startTapGR = UITapGestureRecognizer()
+        startTapGR.addTarget(self, action: #selector(startTapped))
+        startLabel.addGestureRecognizer(startTapGR)
+
+        stopLabel.isUserInteractionEnabled = false
+        let stopTapGR = UITapGestureRecognizer()
+        stopTapGR.addTarget(self, action: #selector(stopTapped))
+        stopLabel.addGestureRecognizer(stopTapGR)
+    }
+
+    @objc private func startTapped() {
+        setLabel(stopLabel, enabled: true)
+        setLabel(startLabel, enabled: false)
+        rideTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+    }
+
+    @objc private func stopTapped() {
+        setLabel(stopLabel, enabled: false)
+        setLabel(startLabel, enabled: true)
+        rideTimer?.invalidate()
+        rideTimer = nil
+    }
+
+    @objc private func updateTimeLabel() {
+        rideDuration += 1
+        let timerString = durationFormatter.string(from: rideDuration)
+        DispatchQueue.main.async {
+            self.timerLabel.text = timerString
+        }
+    }
+
+    private func setLabel(_ label: UILabel, enabled: Bool) {
+        let color = enabled ? orangeColor : disabledColor
+        label.textColor = color
+        label.isUserInteractionEnabled = enabled
     }
 }

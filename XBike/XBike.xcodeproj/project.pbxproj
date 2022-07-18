@@ -30,6 +30,7 @@
 		4173704F287FDFC500B89AC8 /* CoreDataRideRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173704E287FDFC500B89AC8 /* CoreDataRideRepository.swift */; };
 		41737052287FE0AE00B89AC8 /* CD_Ride+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41737050287FE0AE00B89AC8 /* CD_Ride+CoreDataClass.swift */; };
 		41737053287FE0AE00B89AC8 /* CD_Ride+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41737051287FE0AE00B89AC8 /* CD_Ride+CoreDataProperties.swift */; };
+		4184169B28860BAA00E364EB /* RideTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184169A28860BAA00E364EB /* RideTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		4173704E287FDFC500B89AC8 /* CoreDataRideRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRideRepository.swift; sourceTree = "<group>"; };
 		41737050287FE0AE00B89AC8 /* CD_Ride+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CD_Ride+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41737051287FE0AE00B89AC8 /* CD_Ride+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CD_Ride+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4184169A28860BAA00E364EB /* RideTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				4173703F287F709F00B89AC8 /* RidesMapViewController.swift */,
 				41737041287FB80300B89AC8 /* RidesMapViewPresenter.swift */,
 				41737043287FD27D00B89AC8 /* StartRideView.swift */,
+				4184169A28860BAA00E364EB /* RideTimer.swift */,
 			);
 			path = Rides;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				4173704D287FDF7900B89AC8 /* RideRepository.swift in Sources */,
 				41737049287FDE6E00B89AC8 /* CoreDataStack.swift in Sources */,
 				4173704B287FDEEE00B89AC8 /* RideModel.swift in Sources */,
+				4184169B28860BAA00E364EB /* RideTimer.swift in Sources */,
 				41736FF6287F3DE400B89AC8 /* XBike.xcdatamodeld in Sources */,
 				41737025287F436500B89AC8 /* OnboardingPageViewController.swift in Sources */,
 				41737053287FE0AE00B89AC8 /* CD_Ride+CoreDataProperties.swift in Sources */,
