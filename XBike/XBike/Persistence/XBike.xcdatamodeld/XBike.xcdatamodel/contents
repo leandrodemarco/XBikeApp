@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G630" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CD_Ride" representedClassName="CD_Ride" syncable="YES">
+        <attribute name="distanceInMeters" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="durationInSeconds" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endAddress" attributeType="String"/>
+        <attribute name="startAddress" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CD_Ride" positionX="-63" positionY="-18" width="128" height="89"/>
+    </elements>
+</model>

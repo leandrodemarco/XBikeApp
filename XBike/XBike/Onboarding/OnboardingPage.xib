@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Abel-Regular.ttf">
+            <string>Abel-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingPageViewController">
+            <connections>
+                <outlet property="imageView" destination="ZAf-Um-QFd" id="2Wr-TG-sPp"/>
+                <outlet property="nextLabel" destination="Auq-1F-BbF" id="wSB-2T-9eJ"/>
+                <outlet property="previousLabel" destination="2Mf-ge-xRV" id="fzP-j8-tr1"/>
+                <outlet property="skipLabel" destination="MKw-2t-aMS" id="iue-9Y-AYq"/>
+                <outlet property="titleLabel" destination="fup-yk-cib" id="nfR-Cs-6ks"/>
+                <outlet property="view" destination="iN0-l3-epB" id="By9-EN-FbD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See your progress and challenge yourself!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fup-yk-cib">
+                    <rect key="frame" x="20" y="418.5" width="374" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="v4V-yh-aKq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="18"/>
+                    <color key="textColor" name="mainTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZAf-Um-QFd">
+                    <rect key="frame" x="175" y="342.5" width="64" height="64"/>
+                    <color key="backgroundColor" name="mainTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="hzB-Bg-VR5"/>
+                        <constraint firstAttribute="width" constant="64" id="llT-LM-bRV"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next &gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auq-1F-BbF">
+                    <rect key="frame" x="326" y="824" width="68" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="68" id="lur-U6-ug8"/>
+                        <constraint firstAttribute="height" constant="38" id="mNH-LU-YwP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="16"/>
+                    <color key="textColor" name="mainTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt; Previous" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mf-ge-xRV">
+                    <rect key="frame" x="20" y="824" width="75" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="0Pd-UV-6tq"/>
+                        <constraint firstAttribute="width" constant="75" id="NOV-Kw-elw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="16"/>
+                    <color key="textColor" name="mainTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKw-2t-aMS">
+                    <rect key="frame" x="173" y="824" width="68" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="Kgi-kn-uQt"/>
+                        <constraint firstAttribute="width" constant="68" id="Rff-V4-hlr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="16"/>
+                    <color key="textColor" name="mainTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="mainBackground"/>
+            <constraints>
+                <constraint firstItem="Auq-1F-BbF" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="4uT-bw-ilc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Auq-1F-BbF" secondAttribute="trailing" constant="20" id="GPh-RH-kfV"/>
+                <constraint firstItem="fup-yk-cib" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Jil-iN-KWj"/>
+                <constraint firstItem="ZAf-Um-QFd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MCa-Zh-t85"/>
+                <constraint firstItem="MKw-2t-aMS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ork-HR-kwV"/>
+                <constraint firstItem="MKw-2t-aMS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Sxl-Tx-NqG"/>
+                <constraint firstItem="fup-yk-cib" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VYQ-2p-ACO"/>
+                <constraint firstItem="2Mf-ge-xRV" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jRk-SG-fWj"/>
+                <constraint firstItem="fup-yk-cib" firstAttribute="top" secondItem="ZAf-Um-QFd" secondAttribute="bottom" constant="12" id="qjR-bB-aFJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fup-yk-cib" secondAttribute="trailing" constant="20" id="r9G-yk-Uyv"/>
+                <constraint firstItem="2Mf-ge-xRV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yZK-oS-lqx"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="108.48214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="mainBackground">
+            <color red="1" green="0.55686274509803924" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

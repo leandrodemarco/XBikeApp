@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YF9-hT-J36">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Abel-Regular.ttf">
+            <string>Abel-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--My Progress-->
+        <scene sceneID="Lf6-Pw-TfT">
+            <objects>
+                <viewController id="B2w-ge-kM7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1F-4W-9ek">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w6f-gx-6hL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-oh-VDY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKR-1T-BKv">
+                                        <rect key="frame" x="8" y="11.5" width="398" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="VDm-F4-wIG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="16"/>
+                                        <color key="textColor" name="mainTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="mainBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jKR-1T-BKv" secondAttribute="trailing" constant="8" id="7rd-kn-gfD"/>
+                                    <constraint firstAttribute="height" constant="44" id="QbO-dw-CHL"/>
+                                    <constraint firstItem="jKR-1T-BKv" firstAttribute="centerY" secondItem="gSC-oh-VDY" secondAttribute="centerY" id="jRR-xG-5dA"/>
+                                    <constraint firstItem="jKR-1T-BKv" firstAttribute="leading" secondItem="gSC-oh-VDY" secondAttribute="leading" constant="8" id="xdw-Qz-32l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="G4G-9b-z1q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w6f-gx-6hL" firstAttribute="trailing" secondItem="G4G-9b-z1q" secondAttribute="trailing" id="NHa-i8-f8n"/>
+                            <constraint firstItem="gSC-oh-VDY" firstAttribute="leading" secondItem="G4G-9b-z1q" secondAttribute="leading" id="VWG-Or-9UK"/>
+                            <constraint firstItem="w6f-gx-6hL" firstAttribute="top" secondItem="gSC-oh-VDY" secondAttribute="bottom" id="ViB-kE-xYl"/>
+                            <constraint firstItem="gSC-oh-VDY" firstAttribute="top" secondItem="G4G-9b-z1q" secondAttribute="top" id="muF-0Y-QBi"/>
+                            <constraint firstItem="w6f-gx-6hL" firstAttribute="leading" secondItem="G4G-9b-z1q" secondAttribute="leading" id="n8y-aJ-h8S"/>
+                            <constraint firstItem="gSC-oh-VDY" firstAttribute="trailing" secondItem="G4G-9b-z1q" secondAttribute="trailing" id="sRm-o8-zMw"/>
+                            <constraint firstItem="w6f-gx-6hL" firstAttribute="bottom" secondItem="G4G-9b-z1q" secondAttribute="bottom" id="ujo-V4-2kz"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Progress" image="progress" id="ZjB-f6-xQs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIq-yf-aqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818.84057971014499" y="235.71428571428569"/>
+        </scene>
+        <!--Current Ride-->
+        <scene sceneID="ewT-Iy-GWU">
+            <objects>
+                <viewController id="PMV-Zt-aRh" customClass="RidesMapViewController" customModule="XBike" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gAR-bm-qdr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EzD-MX-TE6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uh5-lB-YSM">
+                                        <rect key="frame" x="378" y="8" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="iSd-Vg-TL4"/>
+                                            <constraint firstAttribute="height" constant="28" id="uRi-jc-3bU"/>
+                                        </constraints>
+                                        <color key="tintColor" name="mainTextColor"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addNewRouteButtonTapped" destination="PMV-Zt-aRh" eventType="touchUpInside" id="hfH-be-BbT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ride" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHa-Ac-Y9z">
+                                        <rect key="frame" x="44" y="11.5" width="326" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="lq9-It-g3l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Abel-Regular" family="Abel" pointSize="16"/>
+                                        <color key="textColor" name="mainTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="mainBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3X9-BL-2PV"/>
+                                    <constraint firstItem="Uh5-lB-YSM" firstAttribute="top" secondItem="EzD-MX-TE6" secondAttribute="top" constant="8" id="5SV-N1-uVt"/>
+                                    <constraint firstItem="qHa-Ac-Y9z" firstAttribute="leading" secondItem="EzD-MX-TE6" secondAttribute="leading" constant="44" id="JoY-WO-RAd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uh5-lB-YSM" secondAttribute="trailing" constant="8" id="Nnp-D9-0cH"/>
+                                    <constraint firstItem="Uh5-lB-YSM" firstAttribute="leading" secondItem="qHa-Ac-Y9z" secondAttribute="trailing" constant="8" id="cGz-8R-2xC"/>
+                                    <constraint firstItem="qHa-Ac-Y9z" firstAttribute="centerY" secondItem="EzD-MX-TE6" secondAttribute="centerY" id="p7l-lo-0c5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uh5-lB-YSM" secondAttribute="bottom" constant="8" id="usP-SI-b78"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5VZ-xf-bam">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="baM-Vq-EFa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5VZ-xf-bam" firstAttribute="top" secondItem="EzD-MX-TE6" secondAttribute="bottom" id="96l-zf-C8Q"/>
+                            <constraint firstItem="5VZ-xf-bam" firstAttribute="bottom" secondItem="baM-Vq-EFa" secondAttribute="bottom" id="DXu-Sr-326"/>
+                            <constraint firstItem="EzD-MX-TE6" firstAttribute="top" secondItem="baM-Vq-EFa" secondAttribute="top" id="O7p-Gl-Uzb"/>
+                            <constraint firstItem="5VZ-xf-bam" firstAttribute="trailing" secondItem="baM-Vq-EFa" secondAttribute="trailing" id="Xia-9E-Vyp"/>
+                            <constraint firstItem="EzD-MX-TE6" firstAttribute="trailing" secondItem="baM-Vq-EFa" secondAttribute="trailing" id="gfW-eo-UpN"/>
+                            <constraint firstItem="EzD-MX-TE6" firstAttribute="leading" secondItem="baM-Vq-EFa" secondAttribute="leading" id="i4G-xj-EH5"/>
+                            <constraint firstItem="5VZ-xf-bam" firstAttribute="leading" secondItem="baM-Vq-EFa" secondAttribute="leading" id="vtZ-mK-4m1"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Current Ride" image="bicycle" id="L79-14-jFw"/>
+                    <connections>
+                        <outlet property="mapView" destination="5VZ-xf-bam" id="r96-F0-Zya"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORt-4K-bsu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817.39130434782612" y="-372.32142857142856"/>
+        </scene>
+        <!--Rides View Controller-->
+        <scene sceneID="Hvd-Ix-7sv">
+            <objects>
+                <tabBarController id="YF9-hT-J36" customClass="RidesViewController" customModule="XBike" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="817-Hb-zcV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="mainTextColor"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="mainBackground"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="PMV-Zt-aRh" kind="relationship" relationship="viewControllers" id="U0V-K5-bYJ"/>
+                        <segue destination="B2w-ge-kM7" kind="relationship" relationship="viewControllers" id="4rB-Zg-9lr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIT-NM-Z0P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-72" y="-68"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bicycle" width="25" height="25"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="progress" width="25" height="25"/>
+        <namedColor name="mainBackground">
+            <color red="1" green="0.55686274509803924" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
