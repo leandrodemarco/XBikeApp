@@ -7,7 +7,11 @@
 
 import Foundation
 
-class XBikeTimeFormatter {
+protocol TimeFormatter {
+    func formatTime(_ durationInSeconds: TimeInterval) -> String
+}
+
+class XBikeTimeFormatter: TimeFormatter {
     private let durationFormatter = DateComponentsFormatter()
 
     init() {

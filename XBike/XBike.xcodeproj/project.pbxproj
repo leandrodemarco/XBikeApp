@@ -33,10 +33,11 @@
 		4184169D28861B6300E364EB /* RideSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184169C28861B6300E364EB /* RideSummaryView.swift */; };
 		418416A02886255C00E364EB /* RideSummaryViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184169F2886255C00E364EB /* RideSummaryViewPresenter.swift */; };
 		418416A428862F2400E364EB /* XBikeTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416A328862F2400E364EB /* XBikeTimeFormatter.swift */; };
-		418416A82886323800E364EB /* MyProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416A72886323800E364EB /* MyProgressViewController.swift */; };
+		418416A82886323800E364EB /* RidesProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416A72886323800E364EB /* RidesProgressViewController.swift */; };
 		418416AB2886345A00E364EB /* RideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416A92886345A00E364EB /* RideCell.swift */; };
 		418416AC2886345A00E364EB /* RideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 418416AA2886345A00E364EB /* RideCell.xib */; };
 		418416AE2886386300E364EB /* XBikeProgressViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416AD2886386300E364EB /* XBikeProgressViewPresenter.swift */; };
+		418416B32887152100E364EB /* SaveRideResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416B22887152100E364EB /* SaveRideResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,10 +88,11 @@
 		4184169C28861B6300E364EB /* RideSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSummaryView.swift; sourceTree = "<group>"; };
 		4184169F2886255C00E364EB /* RideSummaryViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSummaryViewPresenter.swift; sourceTree = "<group>"; };
 		418416A328862F2400E364EB /* XBikeTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBikeTimeFormatter.swift; sourceTree = "<group>"; };
-		418416A72886323800E364EB /* MyProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressViewController.swift; sourceTree = "<group>"; };
+		418416A72886323800E364EB /* RidesProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesProgressViewController.swift; sourceTree = "<group>"; };
 		418416A92886345A00E364EB /* RideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideCell.swift; sourceTree = "<group>"; };
 		418416AA2886345A00E364EB /* RideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideCell.xib; sourceTree = "<group>"; };
 		418416AD2886386300E364EB /* XBikeProgressViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBikeProgressViewPresenter.swift; sourceTree = "<group>"; };
+		418416B22887152100E364EB /* SaveRideResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRideResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,7 @@
 			children = (
 				418416A228862EFA00E364EB /* Utilities */,
 				418416B02886395D00E364EB /* MainView */,
-				418416AF2886394300E364EB /* MyProgress */,
+				418416AF2886394300E364EB /* RidesProgress */,
 				41737047287FDE5F00B89AC8 /* Persistence */,
 				4173702E287F59F000B89AC8 /* Rides */,
 				41737021287F408B00B89AC8 /* Fonts */,
@@ -186,6 +188,7 @@
 		4173702E287F59F000B89AC8 /* Rides */ = {
 			isa = PBXGroup;
 			children = (
+				418416B1288714FF00E364EB /* SaveRideResultView */,
 				418416A5288631E800E364EB /* MapView */,
 				418416A12886277600E364EB /* StartRideView */,
 				4184169E2886250F00E364EB /* SummaryView */,
@@ -242,15 +245,15 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
-		418416AF2886394300E364EB /* MyProgress */ = {
+		418416AF2886394300E364EB /* RidesProgress */ = {
 			isa = PBXGroup;
 			children = (
-				418416A72886323800E364EB /* MyProgressViewController.swift */,
+				418416A72886323800E364EB /* RidesProgressViewController.swift */,
 				418416A92886345A00E364EB /* RideCell.swift */,
 				418416AA2886345A00E364EB /* RideCell.xib */,
 				418416AD2886386300E364EB /* XBikeProgressViewPresenter.swift */,
 			);
-			path = MyProgress;
+			path = RidesProgress;
 			sourceTree = "<group>";
 		};
 		418416B02886395D00E364EB /* MainView */ = {
@@ -260,6 +263,14 @@
 				4173703B287F6E9E00B89AC8 /* RidesViewController.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		418416B1288714FF00E364EB /* SaveRideResultView */ = {
+			isa = PBXGroup;
+			children = (
+				418416B22887152100E364EB /* SaveRideResultView.swift */,
+			);
+			path = SaveRideResultView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,8 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418416B32887152100E364EB /* SaveRideResultView.swift in Sources */,
 				41737029287F45D800B89AC8 /* OnboardingManager.swift in Sources */,
-				418416A82886323800E364EB /* MyProgressViewController.swift in Sources */,
+				418416A82886323800E364EB /* RidesProgressViewController.swift in Sources */,
 				4173702B287F466200B89AC8 /* UserDefaultsKeys.swift in Sources */,
 				4173703D287F6E9E00B89AC8 /* RidesViewController.swift in Sources */,
 				41737040287F709F00B89AC8 /* RidesMapViewController.swift in Sources */,

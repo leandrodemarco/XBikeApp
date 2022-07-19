@@ -17,22 +17,29 @@ class DefaultRideSummaryViewPresenter: RideSummaryViewPresenter {
     let rideDistance: Double
     private let rideRepository: RideRepository
     private unowned let delegate: RideSummaryViewPresenterDelegate
+    private let timeFormatter: TimeFormatter
+
+    var durationString: String {
+        timeFormatter.formatTime(rideDuration)
+    }
+
+    var distanceString: String {
+        let distanceInKm = rideDistance / 1000
+        return String(format: "%.1f km", distanceInKm)
+    }
 
     init(
         delegate: RideSummaryViewPresenterDelegate,
         rideDuration: TimeInterval,
         rideDistance: Double,
-        rideRepository: RideRepository
+        rideRepository: RideRepository,
+        timeFormatter: TimeFormatter
     ) {
         self.delegate = delegate
         self.rideDuration = rideDuration
         self.rideDistance = rideDistance
         self.rideRepository = rideRepository
-    }
-
-    func distanceString() -> String {
-        let distanceInKm = rideDistance / 1000
-        return String(format: "%.1f km", distanceInKm)
+        self.timeFormatter = timeFormatter
     }
 
     func deleteTapped() {

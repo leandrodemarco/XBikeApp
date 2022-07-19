@@ -10,7 +10,8 @@ import UIKit
 protocol RideSummaryViewPresenter {
     func deleteTapped()
     func storeTapped()
-    func distanceString() -> String
+    var distanceString: String { get }
+    var durationString: String { get }
     var rideDuration: TimeInterval { get }
 }
 
@@ -29,7 +30,6 @@ class RideSummaryView: UIView {
     private let disabledColor = UIColor(named: "disabledTextColor")
 
     private let presenter: RideSummaryViewPresenter
-    private let timeFormatter = XBikeTimeFormatter()
 
     // MARK: Initialization
     init(
@@ -61,13 +61,14 @@ class RideSummaryView: UIView {
 
         timeTitleLabel.text = "Your time was"
         distanceTitleLabel.text = "Distance"
-        timeValueLabel.text = getDurationString()
-        distanceValueLabel.text = getDistanceString()
+        timeValueLabel.text = presenter.durationString
+        distanceValueLabel.text = presenter.distanceString
 
         storeActionLabel.text = "Store"
         deleteActionLabel.text = "Delete"
 
         actionSeparatorView.backgroundColor = orangeColor
+        storeActionLabel.textColor = orangeColor
 
         timeTitleLabel.textAlignment = .center
         timeValueLabel.textAlignment = .center
@@ -125,15 +126,6 @@ class RideSummaryView: UIView {
             deleteActionLabel.centerYAnchor.constraint(equalTo: actionSeparatorView.centerYAnchor),
             deleteActionLabel.leadingAnchor.constraint(equalTo: actionSeparatorView.trailingAnchor, constant: 8)
         ])
-    }
-
-    // MARK: Distance and Time Formatting
-    private func getDistanceString() -> String {
-        presenter.distanceString()
-    }
-
-    private func getDurationString() -> String {
-        timeFormatter.formatTime(presenter.rideDuration)
     }
 
     // MARK: Actions

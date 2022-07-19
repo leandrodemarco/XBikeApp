@@ -19,6 +19,7 @@ protocol RidesMapViewPresenter {
 
 class RidesMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addNewRouteButton: UIButton!
 
     var presenter: RidesMapViewPresenter? {
         didSet { presenter?.view = self }
@@ -54,10 +55,8 @@ class RidesMapViewController: UIViewController {
     }
 
     @IBAction private func addNewRouteButtonTapped() {
-        clearRouteDrawing()
-
+        addNewRouteButton.isEnabled = false
         presenter?.startNewRoute()
-        presentedAccessoryView?.removeFromSuperview()
     }
 
     @objc private func mapTapped(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -93,7 +92,8 @@ class RidesMapViewController: UIViewController {
         let summaryPresenter = DefaultRideSummaryViewPresenter(delegate: self,
                                                                rideDuration: rideDuration,
                                                                rideDistance: distance,
-                                                               rideRepository: CoreDataRideRepository.singleton)
+                                                               rideRepository: CoreDataRideRepository.singleton,
+                                                               timeFormatter: XBikeTimeFormatter())
         let summaryView = RideSummaryView(frame: .zero, presenter: summaryPresenter)
         view.addSubview(summaryView)
         summaryView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,6 +105,33 @@ class RidesMapViewController: UIViewController {
             summaryView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         presentedAccessoryView = summaryView
+    }
+
+    private func displaySaveResultViewWithMessage(_ message: String) {
+        presentedAccessoryView?.removeFromSuperview()
+        let saveResultView = SaveRideResultView(frame: .zero, message: message, delegate: self)
+        view.addSubview(saveResultView)
+        displayAccessoryViewCentered(saveResultView)
+    }
+
+    private func displayAccessoryViewCentered(_ accessoryView: UIView) {
+        presentedAccessoryView?.removeFromSuperview()
+        view.addSubview(accessoryView)
+        accessoryView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            accessoryView.heightAnchor.constraint(equalToConstant: 250),
+            accessoryView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            accessoryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            accessoryView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        presentedAccessoryView = accessoryView
+    }
+
+    private func dismissPresentedViewAndResetAddRouteButton() {
+        addNewRouteButton.isEnabled = true
+        presentedAccessoryView?.removeFromSuperview()
+        presentedAccessoryView = nil
     }
 }
 
@@ -153,11 +180,20 @@ extension RidesMapViewController: RidesMapViewProtocol {
 
 extension RidesMapViewController: RideSummaryViewPresenterDelegate {
     func rideSavedWithError(_ error: Error?) {
-        print("Ride saved with error \(error)")
+        var message = "Your progress has been correctly stored!"
+        if let error = error {
+            message = "Failed to save ride: \(error)"
+        }
+        displaySaveResultViewWithMessage(message)
     }
 
     func discardCurrentRide() {
-        presentedAccessoryView?.removeFromSuperview()
-        presentedAccessoryView = nil
+        dismissPresentedViewAndResetAddRouteButton()
+    }
+}
+
+extension RidesMapViewController: SaveRideResultViewDelegate {
+    func okTapped() {
+        dismissPresentedViewAndResetAddRouteButton()
     }
 }

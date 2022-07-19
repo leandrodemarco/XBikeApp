@@ -11,7 +11,7 @@ protocol MyProgressViewPresenter: AnyObject {
     func getAllRides() -> [RideModel]
 }
 
-class MyProgressViewController: UIViewController {
+class RidesProgressViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let timeFormatter = XBikeTimeFormatter()
 
@@ -30,7 +30,7 @@ class MyProgressViewController: UIViewController {
     }
 }
 
-extension MyProgressViewController: UITableViewDataSource {
+extension RidesProgressViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
