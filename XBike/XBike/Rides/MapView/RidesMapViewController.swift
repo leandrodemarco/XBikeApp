@@ -13,6 +13,8 @@ protocol RidesMapViewPresenter {
     func getCurrentLocation() -> CLLocationCoordinate2D
     func startNewRoute()
     func tappedLocation(_ location: CLLocationCoordinate2D)
+
+    func currentRideDistance() -> Double
 }
 
 class RidesMapViewController: UIViewController {
@@ -21,9 +23,9 @@ class RidesMapViewController: UIViewController {
     var presenter: RidesMapViewPresenter? {
         didSet { presenter?.view = self }
     }
-    private let kRegionMeters: CLLocationDistance = 500
+    private let kRegionMeters: CLLocationDistance = 1500
     private var routeRenderer: MKOverlayRenderer?
-    private var presentedRideView: UIView?
+    private var presentedAccessoryView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +47,17 @@ class RidesMapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
 
-    @IBAction private func addNewRouteButtonTapped() {
+    private func clearRouteDrawing() {
         for overlay in mapView.overlays {
             mapView.removeOverlay(overlay)
         }
+    }
+
+    @IBAction private func addNewRouteButtonTapped() {
+        clearRouteDrawing()
 
         presenter?.startNewRoute()
-        presentedRideView?.removeFromSuperview()
+        presentedAccessoryView?.removeFromSuperview()
     }
 
     @objc private func mapTapped(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -62,7 +68,9 @@ class RidesMapViewController: UIViewController {
     }
 
     private func displayNewRideView() {
-        let newRideView = StartRideView(frame: .zero)
+        let newRideView = StartRideView(frame: .zero) { [weak self] rideDuration in
+            self?.displayRideSummaryView(rideDuration)
+        }
         view.addSubview(newRideView)
         newRideView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -72,7 +80,31 @@ class RidesMapViewController: UIViewController {
             newRideView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             newRideView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
-        presentedRideView = newRideView
+        presentedAccessoryView = newRideView
+    }
+
+    private func displayRideSummaryView(_ rideDuration: TimeInterval) {
+        clearRouteDrawing()
+        guard let distance = presenter?.currentRideDistance() else {
+            return
+        }
+
+        presentedAccessoryView?.removeFromSuperview()
+        let summaryPresenter = DefaultRideSummaryViewPresenter(delegate: self,
+                                                               rideDuration: rideDuration,
+                                                               rideDistance: distance,
+                                                               rideRepository: CoreDataRideRepository.singleton)
+        let summaryView = RideSummaryView(frame: .zero, presenter: summaryPresenter)
+        view.addSubview(summaryView)
+        summaryView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            summaryView.heightAnchor.constraint(equalToConstant: 250),
+            summaryView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            summaryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            summaryView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        presentedAccessoryView = summaryView
     }
 }
 
@@ -106,31 +138,26 @@ extension RidesMapViewController: MKMapViewDelegate {
 }
 
 extension RidesMapViewController: RidesMapViewProtocol {
-    func drawRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
-        let directionsRequest = MKDirections.Request()
-        directionsRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
-        directionsRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
-        directionsRequest.transportType = .walking
-
-        let directions = MKDirections(request: directionsRequest)
-        directions.calculate { [weak self] response, error in
-            guard let self = self else { return }
-            if let error = error {
-                print("Error calculating directions: \(error)")
-                return
-            }
-
-            if let route = response?.routes.first {
-                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
-                DispatchQueue.main.async {
-                    self.displayNewRideView()
-                }
-            }
+    func drawRoute(routePolyline: MKPolyline) {
+        DispatchQueue.main.async {
+            self.mapView.addOverlay(routePolyline, level: .aboveRoads)
+            self.displayNewRideView()
         }
     }
 
     func drawPoint(at: CLLocationCoordinate2D) {
         let circle = MKCircle(center: at, radius: 5)
         mapView.addOverlay(circle)
+    }
+}
+
+extension RidesMapViewController: RideSummaryViewPresenterDelegate {
+    func rideSavedWithError(_ error: Error?) {
+        print("Ride saved with error \(error)")
+    }
+
+    func discardCurrentRide() {
+        presentedAccessoryView?.removeFromSuperview()
+        presentedAccessoryView = nil
     }
 }

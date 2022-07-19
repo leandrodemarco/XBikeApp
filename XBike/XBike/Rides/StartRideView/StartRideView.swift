@@ -17,23 +17,26 @@ class StartRideView: UIView {
 
     private var rideTimer: Timer?
     private var rideDuration: TimeInterval = 0
-    private let durationFormatter = DateComponentsFormatter()
+    private let timeFormatter = XBikeTimeFormatter()
 
     private let kTimerLabelInset: CGFloat = 16
     private let kControlLabelsWidth: CGFloat = 92
     private let kLabelsHeight: CGFloat = 21
 
-    override init(frame: CGRect) {
+    private let completionClosure: (TimeInterval) -> Void
+
+    init(
+        frame: CGRect,
+        completionClosure: @escaping (TimeInterval) -> Void
+    ) {
+        self.completionClosure = completionClosure
         super.init(frame: frame)
         backgroundColor = .white
         separatorView.backgroundColor = orangeColor
         setupLabels()
         setupAutolayout()
         setupActions()
-
-        durationFormatter.allowedUnits = [.hour, .minute, .second]
-        durationFormatter.unitsStyle = .positional
-        durationFormatter.zeroFormattingBehavior = .pad
+        layer.cornerRadius = 10
     }
 
     required init?(coder: NSCoder) {
@@ -86,7 +89,7 @@ class StartRideView: UIView {
         setLabel(startLabel, enabled: true)
         setLabel(stopLabel, enabled: false)
 
-        timerLabel.text = "00 : 00 : 00"
+        timerLabel.text = timeFormatter.formatTime(0)
         startLabel.text = "Start"
         stopLabel.text = "Stop"
     }
@@ -110,15 +113,14 @@ class StartRideView: UIView {
     }
 
     @objc private func stopTapped() {
-        setLabel(stopLabel, enabled: false)
-        setLabel(startLabel, enabled: true)
         rideTimer?.invalidate()
         rideTimer = nil
+        completionClosure(rideDuration)
     }
 
     @objc private func updateTimeLabel() {
         rideDuration += 1
-        let timerString = durationFormatter.string(from: rideDuration)
+        let timerString = timeFormatter.formatTime(rideDuration)
         DispatchQueue.main.async {
             self.timerLabel.text = timerString
         }

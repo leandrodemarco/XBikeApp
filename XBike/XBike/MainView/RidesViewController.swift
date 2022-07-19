@@ -16,6 +16,11 @@ class RidesViewController: UITabBarController {
         if let ridesMapViewController = viewControllers?.first as? RidesMapViewController {
             ridesMapViewController.presenter = XBikeRidesMapViewPresenter()
         }
+
+        if let progressViewController = viewControllers?.last as? MyProgressViewController {
+            let repository = CoreDataRideRepository.singleton
+            progressViewController.presenter = XBikeProgressViewPresenter(repository: repository)
+        }
     }
 
 }

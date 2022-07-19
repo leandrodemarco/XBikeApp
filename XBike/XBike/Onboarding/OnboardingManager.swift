@@ -14,8 +14,8 @@ protocol OnboardingManager {
 
 class XBikeOnboardingManager: OnboardingManager {
     func shouldDisplayOnboarding() -> Bool {
-        true
-        // !UserDefaults.standard.bool(forKey: UserDefaultsKeys.dontShowOnboarding)
+        // true
+        !UserDefaults.standard.bool(forKey: UserDefaultsKeys.dontShowOnboarding)
     }
 
     func stopShowingOnboarding() {
