@@ -15,9 +15,9 @@ protocol RidesMapViewProtocol: AnyObject {
 }
 
 class XBikeRidesMapViewPresenter: RidesMapViewPresenter {
-    private var startLocation: CLLocationCoordinate2D?
-    private var endLocation: CLLocationCoordinate2D?
-    private var distance: Double = 0
+    private(set) var startLocation: CLLocationCoordinate2D?
+    private(set) var endLocation: CLLocationCoordinate2D?
+    private(set) var distance: Double = 0
     weak var view: RidesMapViewProtocol?
 
     func getCurrentLocation() -> CLLocationCoordinate2D {
@@ -40,10 +40,6 @@ class XBikeRidesMapViewPresenter: RidesMapViewPresenter {
             view?.drawPoint(at: location)
             calculateRoute()
         }
-    }
-
-    func currentRideDistance() -> Double {
-        distance
     }
 
     private func calculateRoute() {

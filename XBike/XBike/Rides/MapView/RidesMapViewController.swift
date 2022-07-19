@@ -14,7 +14,9 @@ protocol RidesMapViewPresenter {
     func startNewRoute()
     func tappedLocation(_ location: CLLocationCoordinate2D)
 
-    func currentRideDistance() -> Double
+    var distance: Double { get }
+    var startLocation: CLLocationCoordinate2D? { get }
+    var endLocation: CLLocationCoordinate2D? { get }
 }
 
 class RidesMapViewController: UIViewController {
@@ -84,7 +86,7 @@ class RidesMapViewController: UIViewController {
 
     private func displayRideSummaryView(_ rideDuration: TimeInterval) {
         clearRouteDrawing()
-        guard let distance = presenter?.currentRideDistance() else {
+        guard let distance = presenter?.distance else {
             return
         }
 
@@ -92,8 +94,11 @@ class RidesMapViewController: UIViewController {
         let summaryPresenter = DefaultRideSummaryViewPresenter(delegate: self,
                                                                rideDuration: rideDuration,
                                                                rideDistance: distance,
+                                                               startPoint: presenter?.startLocation,
+                                                               endPoint: presenter?.endLocation,
                                                                rideRepository: CoreDataRideRepository.singleton,
-                                                               timeFormatter: XBikeTimeFormatter())
+                                                               timeFormatter: XBikeTimeFormatter(),
+                                                               reverseGeoCoder: XBikeReverseGeoCoder())
         let summaryView = RideSummaryView(frame: .zero, presenter: summaryPresenter)
         view.addSubview(summaryView)
         summaryView.translatesAutoresizingMaskIntoConstraints = false

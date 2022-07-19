@@ -38,6 +38,7 @@
 		418416AC2886345A00E364EB /* RideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 418416AA2886345A00E364EB /* RideCell.xib */; };
 		418416AE2886386300E364EB /* XBikeProgressViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416AD2886386300E364EB /* XBikeProgressViewPresenter.swift */; };
 		418416B32887152100E364EB /* SaveRideResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416B22887152100E364EB /* SaveRideResultView.swift */; };
+		418416B5288720E000E364EB /* ReverseGeoCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418416B4288720E000E364EB /* ReverseGeoCoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		418416AA2886345A00E364EB /* RideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideCell.xib; sourceTree = "<group>"; };
 		418416AD2886386300E364EB /* XBikeProgressViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBikeProgressViewPresenter.swift; sourceTree = "<group>"; };
 		418416B22887152100E364EB /* SaveRideResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRideResultView.swift; sourceTree = "<group>"; };
+		418416B4288720E000E364EB /* ReverseGeoCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeoCoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				418416A328862F2400E364EB /* XBikeTimeFormatter.swift */,
+				418416B4288720E000E364EB /* ReverseGeoCoder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				4173704F287FDFC500B89AC8 /* CoreDataRideRepository.swift in Sources */,
 				41737052287FE0AE00B89AC8 /* CD_Ride+CoreDataClass.swift in Sources */,
 				41737044287FD27D00B89AC8 /* StartRideView.swift in Sources */,
+				418416B5288720E000E364EB /* ReverseGeoCoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
